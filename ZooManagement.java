@@ -1,12 +1,17 @@
 package in.esprit.gestionZoo.main;
-import tn.esprit.gestionzoo.entitée.*;
+import tn.esprit.gestionZoo.entitée.Animal;
+import tn.esprit.gestionZoo.entitée.InvalidAgeException;
+import tn.esprit.gestionZoo.entitée.Zoo;
+import tn.esprit.gestionZoo.entitée.ZooFullException;
+import tn.esprit.gestionZoo.entitée.*;
 
 public class ZooManagement {
 
     public static void main(String[] args) {
         Animal lion = new Animal("Felidae", "Simba", 5, true);
+        Zoo zoo= new Zoo();
 
-        Zoo myZoo = new Zoo("Wildlife Park", "Ariana");
+        /*Zoo myZoo = new Zoo("Wildlife Park", "Ariana");
         Zoo notMyZoo = new Zoo("WaterPark", "Siliana");
         TerrestrialAnimal terrestrialAnimal = new TerrestrialAnimal();
         Dolphin dolphin = new Dolphin("Delphinidae", "Flipper", 10, true, "Ocean", 20.5f);
@@ -35,21 +40,27 @@ public class ZooManagement {
 
         myZoo.displayAnimals();
 
-        System.out.println(myZoo);
+        System.out.println(myZoo);*/
+        try {
 
-        myZoo.addAnimal(lion);
-        myZoo.addAnimal(dog);
-        myZoo.addAnimal(dog2);
-        myZoo.displayAnimals();
+        Zoo.addAnimal(new Animal("lion","loulou",-5));
+        Zoo.addAnimal(new Animal("dog","doudou",5);
+        Zoo.addAnimal(new Animal("dog2","joujou",2);
+
+        /*myZoo.displayAnimals();
         System.out.println("a" + myZoo.removeAnimal(lion));
         myZoo.displayAnimals();
         System.out.println("a" + myZoo.removeAnimal(dog2));
         myZoo.displayAnimals();
         System.out.println("a" + myZoo.removeAnimal(dog));
-        myZoo.displayAnimals();
+        myZoo.displayAnimals();*/
 
 //        System.out.println(tn.esprit.gestionzoo.entitees.Zoo.comparerZoo(myZoo, notMyZoo));
 //        System.out.println(myZoo.isZooFull());
 
+    } catch (ZooFullException | InvalidAgeException ex)
+        {
+            System.out.println("Erreur:"+ ex.getMessage());
+        }
     }
 }
