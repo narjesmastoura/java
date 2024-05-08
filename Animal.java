@@ -1,3 +1,5 @@
+package tn.esprit.gestionzoo.entities;
+
 class Animal {
     private String family;
     private String name;
@@ -13,4 +15,12 @@ class Animal {
     }
 
 
+    // Méthode pour restreindre l'accès à l'âge et valider sa valeur
+    public void setAge(int age) {
+        if (age >= 0) {
+            this.age = age;
+        } else {
+            System.out.println("L'âge de l'animal ne peut pas être négatif.");
+        }
+    }
 }

@@ -1,17 +1,33 @@
+package tn.esprit.gestionzoo.entities;
+
 class Zoo {
-    private Animal[] animals;
+   /* private Animal[] animals;
     private String name;
     private String city;
     private int nbrCages;
-    private int animalCount; // Compteur d'animaux
+    private int animalCount; // Compteur d'animaux */
+   private static final int NBR_CAGES_MAX = 25;
+    private Animal[] animals;
+    private String name;
+    private String city;
+    private final int nbrCages;
+    private int animalCount;
 
     // Constructeur paramétré
-    public Zoo(String name, String city, int nbrCages) {
-        animals = new Animal[nbrCages];
-        this.name = name;
+    public Zoo(String name, String city) {
+        this.setName(name); // Validation du nom
         this.city = city;
-        this.nbrCages = nbrCages;
+        this.nbrCages = NBR_CAGES_MAX;
+        this.animals = new Animal[nbrCages];
         this.animalCount = 0;
+    }
+    // Méthode pour restreindre l'accès au nom et valider sa valeur
+    public void setName(String name) {
+        if (!name.isEmpty()) {
+            this.name = name;
+        } else {
+            System.out.println("Le nom du zoo ne peut pas être vide.");
+        }
     }
 
     // Méthode pour afficher les informations du zoo
@@ -23,20 +39,19 @@ class Zoo {
 
     // Méthode pour ajouter un animal au zoo
     public boolean addAnimal(Animal animal) {
-        if (animalCount < nbrCages) {
+        if (!isZooFull()) {
             animals[animalCount] = animal;
             animalCount++;
             return true;
         } else {
-            System.out.println("Nombre maximal d'animaux atteint dans le zoo.");
+            System.out.println("Le zoo est plein, impossible d'ajouter un nouvel animal.");
             return false;
         }
     }
-
     // Méthode pour afficher les animaux du zoo
     public void displayAnimals() {
         for (int i = 0; i < animalCount; i++) {
-            System.out.println("Animal " + (i + 1) + " : " + animals[i]);
+            System.out.println("tn.esprit.gestionzoo.entities.Animal " + (i + 1) + " : " + animals[i]);
         }
     }
 
@@ -63,6 +78,15 @@ class Zoo {
             return true;
         }
         return false;
+    }
+    // Méthode pour vérifier si le zoo est plein
+    public boolean isZooFull() {
+        return animalCount >= nbrCages;
+    }
+
+    // Méthode pour comparer deux zoos et retourner celui avec le plus d'animaux
+    public static Zoo comparerZoo(Zoo z1, Zoo z2) {
+        return z1.animalCount > z2.animalCount ? z1 : z2;
     }
 }
 

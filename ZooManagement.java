@@ -1,4 +1,7 @@
-import java.util.Scanner;
+package main;
+
+import tn.esprit.gestionzoo.entities.Animal;
+import tn.esprit.gestionzoo.entities.Zoo;
 
 public class ZooManagement {
     public static void main(String[] args) {
@@ -31,9 +34,9 @@ public class ZooManagement {
         Animal searchedAnimal = new Animal("Félin", "Lion", 5, true);
         int index = myZoo.searchAnimal(searchedAnimal);
         if (index != -1) {
-            System.out.println("\nAnimal trouvé à l'indice : " + index);
+            System.out.println("\ntn.esprit.gestionzoo.entities.Animal trouvé à l'indice : " + index);
         } else {
-            System.out.println("\nAnimal non trouvé dans le zoo.");
+            System.out.println("\ntn.esprit.gestionzoo.entities.Animal non trouvé dans le zoo.");
         }
 
         // Instruction 13
