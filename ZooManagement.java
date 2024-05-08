@@ -2,27 +2,44 @@ import java.util.Scanner;
 
 public class ZooManagement {
     public static void main(String[] args) {
-        // Instruction 1
-        int nbrCages = 20;
-        String zooName = "my zoo";
-        System.out.println(zooName + " comporte " + nbrCages + " cages");
+        // Instruction 6
+        Animal lion = new Animal("Félin", "Lion", 5, true);
+        Zoo myZoo = new Zoo("Mon zoo", "Paris", 25);
 
-        // Instruction 2
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Entrez le nombre de cages :");
-        while (!scanner.hasNextInt()) {
-            System.out.println("Veuillez entrer un nombre valide :");
-            scanner.next();
+        // Instruction 8
+        myZoo.displayZoo();
+
+        // Ajouter l'animal au zoo
+        myZoo.addAnimal(lion);
+
+        // Afficher les animaux du zoo
+        System.out.println("\nAnimaux du zoo :");
+        myZoo.displayAnimals();
+
+        // Instruction 10
+        // Ajouter plus d'animaux que le nombre maximal de cages dans le zoo
+        for (int i = 0; i < 30; i++) {
+            myZoo.addAnimal(new Animal("Félin", "Tigre", 4, true));
         }
-        nbrCages = scanner.nextInt();
 
-        System.out.println("Entrez le nom du zoo :");
-        zooName = scanner.next();
+        // Afficher les animaux du zoo
+        System.out.println("\nAnimaux du zoo après dépassement :");
+        myZoo.displayAnimals();
 
-        System.out.println("Nombre de cages : " + nbrCages);
-        System.out.println("Nom du zoo : " + zooName);
+        // Instruction 11
+        // Recherche d'un animal dans le zoo
+        Animal searchedAnimal = new Animal("Félin", "Lion", 5, true);
+        int index = myZoo.searchAnimal(searchedAnimal);
+        if (index != -1) {
+            System.out.println("\nAnimal trouvé à l'indice : " + index);
+        } else {
+            System.out.println("\nAnimal non trouvé dans le zoo.");
+        }
 
-        // Instruction 3
-        System.out.println("Changements effectués : " + zooName + " comporte " + nbrCages + " cages");
+        // Instruction 13
+        // Suppression d'un animal du zoo
+        myZoo.removeAnimal(lion);
+        System.out.println("\nAnimaux du zoo après suppression :");
+        myZoo.displayAnimals();
     }
 }
