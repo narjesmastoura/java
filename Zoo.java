@@ -10,7 +10,8 @@ class Zoo {
         animals = new Animal[nbrCages];
         this.name = name;
         this.city = city;
-        this.nbrCages = nbrCages;
+       // this.nbrCages = nbrCages;
+        this.animals = new Animal[nbrCages];
         this.animalCount = 0;
     }
 
@@ -63,6 +64,15 @@ class Zoo {
             return true;
         }
         return false;
+    }
+    // Méthode pour vérifier si le zoo est plein
+    public boolean isZooFull() {
+        return animalCount >= nbrCages;
+    }
+
+    // Méthode pour comparer deux zoos et retourner celui avec le plus d'animaux
+    public static Zoo comparerZoo(Zoo z1, Zoo z2) {
+        return z1.animalCount > z2.animalCount ? z1 : z2;
     }
 }
 
